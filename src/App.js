@@ -242,6 +242,9 @@ function App() {
 					</form>
 				</div>
 			</main>
+      <footer>
+        <span class="footer-text"><p>Made with &#x2665; by Robin Hartog</p></span>
+      </footer>
 		</div>
 	);
 }
