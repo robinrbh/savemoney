@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import Toolbar from "./Toolbar.js"
 
 function App() {
 	const [travelExpenses, setTravelExpenses] = useState(19);
@@ -15,59 +16,63 @@ function App() {
 	const totalOfficeCosts = officeCosts * 12;
 
 	// totalExpenses = 60km per dag * 5 dagen * 52 weken * 0.19
-	const totalExpenses = numberEmployees * (totalTravelDistance * travelExpensesInEuros);
+	const totalExpenses =
+		numberEmployees * (totalTravelDistance * travelExpensesInEuros);
 	const totalExpensesInclOffice = totalExpenses + totalOfficeCosts;
 
-  const getCar = costs => {
-    if (totalExpensesInclOffice < 50000 ){
-      return "BMW 1-serie!";
-    } else if (totalExpensesInclOffice >= 50000 && totalExpensesInclOffice < 199000) {
-      return "BMW X5";
-    } else if (totalExpensesInclOffice >= 199000 && totalExpensesInclOffice < 500000) {
-      return "Ferrari 458";
-    } else if (totalExpensesInclOffice >= 500000) {
-      return "Pagani";
-    }
-}
+	const getCar = (costs) => {
+		if (totalExpensesInclOffice < 80000) {
+			return "BMW 1-serie!";
+		} else if (
+			totalExpensesInclOffice >= 80000 &&
+			totalExpensesInclOffice < 190000
+		) {
+			return "BMW X5";
+		} else if (
+			totalExpensesInclOffice >= 190000 &&
+			totalExpensesInclOffice < 500000
+		) {
+			return "Ferrari 458";
+		} else if (totalExpensesInclOffice >= 500000) {
+			return "Pagani";
+		}
+	};
 
 	function ifStatement(costs) {
-
-      const rightNow = getCar(costs);
-      
-      let imageURL = "";
+		const rightNow = getCar(costs);
+		let imageURL = "";
 
 		if (rightNow === "BMW 1-serie!") {
-      //return "You just saved enough money to buy a small car!";
-      imageURL = "https://s1.cdn.autoevolution.com/images/testdrive2_chapters/2013-bmw-m135i-xdrive-test-drive-1.jpg";
-    } else if (rightNow === "BMW X5"){
-      imageURL = "https://besthqwallpapers.com/Uploads/3-10-2019/107219/thumb2-2020-bmw-x5-m-competition-front-view-exterior-blue-suv.jpg";
-    } else if (rightNow === "Ferrari 458") {
-      imageURL = "https://media.autoweek.nl/m/m1my59hbq7cr_800.jpg";
-    } else if (rightNow === "Pagani") {
-      imageURL = "https://static.autoblog.nl/images/wp2019/pagani-huayra-roadster-bc-csr-racing-2-game-2019-001.jpg";
-    }
+			imageURL =
+				"https://s1.cdn.autoevolution.com/images/testdrive2_chapters/2013-bmw-m135i-xdrive-test-drive-1.jpg";
+		} else if (rightNow === "BMW X5") {
+			imageURL =
+				"https://besthqwallpapers.com/Uploads/3-10-2019/107219/thumb2-2020-bmw-x5-m-competition-front-view-exterior-blue-suv.jpg";
+		} else if (rightNow === "Ferrari 458") {
+			imageURL = "https://media.autoweek.nl/m/m1my59hbq7cr_800.jpg";
+		} else if (rightNow === "Pagani") {
+			imageURL =
+				"https://static.autoblog.nl/images/wp2019/pagani-huayra-roadster-bc-csr-racing-2-game-2019-001.jpg";
+		}
 
-    return <div>
-      <div>
-          <h2>Because your employees are working remote, you saved <strong>€{Math.round(totalExpensesInclOffice)}</strong> and can now buy this:</h2>
-          <img alt="cars" class="responsive" src={imageURL} />
-      </div>
-    </div>;
-		// } else if (
-		// 	totalExpensesInclOffice > 26679 && totalExpensesInclOffice <= 50000
-		// ) {
-		// 	return "Now you just saved enough money to go on a big vacation!";
-		// } else {
-		// 	return "You have now saved enough money so you can go for a trip around the world!";
-		// }
+		return (
+			<div>
+				<div>
+					<h2>
+						Because your employees are working remote, you saved{" "}
+						<strong>€{Math.round(totalExpensesInclOffice)}</strong> and can now
+						buy this:
+					</h2>
+					<img alt="cars" class="responsive" src={imageURL} />
+				</div>
+			</div>
+		);
 	}
 
 	return (
 		<div className="App">
 			<title>SAVE MONEY</title>
-			<header>
-				<h1>Save money, work remote</h1>
-			</header>
+      <Toolbar />
 			<main>
 				<div className="sizer main-content">
 					<form>
@@ -75,7 +80,6 @@ function App() {
 						<div className="card">
 							<div className="input-group">
 								<label htmlFor="number-employees">
-									{/* <span role="img" aria-label="stopwatch icon"></span>{" "} */}
 									<span>Number of employees:</span>
 								</label>
 								<input
@@ -98,7 +102,6 @@ function App() {
 
 							<div className="input-group">
 								<label htmlFor="working-days">
-									<span role="img" aria-label="stopwatch icon"></span>{" "}
 									<span>Days per week your employees work:</span>
 								</label>
 								<input
@@ -121,7 +124,6 @@ function App() {
 
 							<div className="input-group">
 								<label htmlFor="vacation-days">
-									<span role="img" aria-label="stopwatch icon"></span>{" "}
 									<span>Number of vacationdays:</span>
 								</label>
 								<input
@@ -144,7 +146,6 @@ function App() {
 
 							<div className="input-group">
 								<label htmlFor="reiskosten">
-									<span role="img" aria-label="stopwatch icon"></span>{" "}
 									<span>Travelexpenses (in Eurocents):</span>
 								</label>
 								<input
@@ -167,7 +168,6 @@ function App() {
 
 							<div className="input-group">
 								<label htmlFor="travel-distance">
-									<span role="img" aria-label="stopwatch icon"></span>{" "}
 									<span>Traveldistance on average per employee (in km):</span>
 								</label>
 								<input
@@ -190,13 +190,12 @@ function App() {
 
 							<div className="input-group">
 								<label htmlFor="office-costs">
-									<span role="img" aria-label="stopwatch icon"></span>{" "}
 									<span>Office costs per month (in Euros):</span>
 								</label>
 								<input
 									id="office-costs"
-									min="500"
-									max="100000"
+									min="0"
+									max="10000"
 									type="range"
 									value={officeCosts}
 									onChange={(e) => setOfficeCosts(e.target.value)}
@@ -205,46 +204,49 @@ function App() {
 									className="value"
 									value={officeCosts}
 									type="number"
-									min="500"
-									max="100000"
+									min="0"
+									max="10000"
 									onChange={(e) => setOfficeCosts(e.target.value)}
 								/>
 							</div>
 						</div>
-						<p></p>
-						<h2>Letting your employees work from home will save you:</h2>
-						<div className="card">
-							<h3>You'll save in travelexpenses alone:</h3>
-							<dl>
-								<dt>
-									{numberEmployees} employee(s) * {dailyTravelDistance} km ⨉{" "}
-									{workingDays} days per week x 52 weeks x €
-									{travelExpensesInEuros} =
-								</dt>
-								<dd>€{Math.round(totalExpenses)} per year</dd>
-							</dl>
-							<hr />
-							<h3>And including office costs:</h3>
-							<dl>
-								<dt>
-									{numberEmployees} employee(s) * {dailyTravelDistance} km ⨉{" "}
-									{workingDays} days x €{travelExpensesInEuros} + {totalOfficeCosts} =
-								</dt>
-								<dd>€{Math.round(totalExpensesInclOffice)} per year</dd>
-							</dl>
-						</div>
-						<p></p>
-
-						<div className="card">
+					</form>
+          <div className="blocks">
+            <h2>Letting your employees work from home will save you:</h2>
+            <div className="block card">
+              <h3>You'll save in travelexpenses alone:</h3>
+              <dl>
+                <dt>
+                  {numberEmployees} employee(s) * {dailyTravelDistance} km ⨉{" "}
+                  {workingDays} days x 52 weeks x €
+                  {travelExpensesInEuros} =
+                </dt>
+                <dd>€{Math.round(totalExpenses)} per year</dd>
+              </dl>
+            </div>
+            <div className="block card">
+            <h3>And including office costs:</h3>
+                <dl>
+                  <dt>
+                    {numberEmployees} employee(s) * {dailyTravelDistance} km ⨉{" "}
+                    {workingDays} days x €{travelExpensesInEuros} +{" "}
+                    {totalOfficeCosts} =
+                  </dt>
+                  <dd>€{Math.round(totalExpensesInclOffice)} per year</dd>
+                </dl>
+            </div>
+            <div className="block card">
 							<h3>Or to make it a bit more attractive for you as a boss:</h3>
 							{ifStatement()}
 						</div>
-					</form>
+          </div>
 				</div>
 			</main>
-      <footer>
-        <span class="footer-text"><p>Made with &#x2665; by Robin Hartog</p></span>
-      </footer>
+			<footer>
+				<span class="footer-text">
+					<p>Made with &#x2665; by Robin Hartog</p>
+				</span>
+			</footer>
 		</div>
 	);
 }
