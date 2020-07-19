@@ -11,24 +11,29 @@ function App() {
 
 	const travelExpensesInEuros = travelExpenses / 100;
 	const dailyTravelDistance = travelDistance * 2;
-	const totalTravelDistance = dailyTravelDistance * workingDays * (52 - vacationDays / workingDays);
+	const totalTravelDistance =
+		dailyTravelDistance * workingDays * (52 - vacationDays / workingDays);
 	const totalOfficeCosts = officeCosts * 12;
 
 	// totalExpenses = 60km per dag * 5 dagen * 52 weken * 0.19
-	const totalExpenses = numberEmployees * (totalTravelDistance * travelExpensesInEuros);
-  const totalExpensesInclOffice = totalExpenses + totalOfficeCosts;
-  
-  // var image1 = document.getElementById('smallCar');
-  // var image2 = document.getElementById('bigCar');
+	const totalExpenses =
+		numberEmployees * (totalTravelDistance * travelExpensesInEuros);
+	const totalExpensesInclOffice = totalExpenses + totalOfficeCosts;
+
+	// var image1 = document.getElementById('smallCar');
+	// var image2 = document.getElementById('bigCar');
 
 	function ifStatement() {
-        if(totalExpensesInclOffice <= 26679) {
-           return "Small car!";
-        } else if (totalExpensesInclOffice > 26679 && totalExpensesInclOffice <= 50000) {
-           return "Big vacation!"
-        } else {
-          return "You can now go around the world!"
-        }
+		if (totalExpensesInclOffice <= 26679) {
+			return "Small car!";
+		} else if (
+			totalExpensesInclOffice > 26679 &&
+			totalExpensesInclOffice <= 50000
+		) {
+			return "Big vacation!";
+		} else {
+			return "You can now go around the world!";
+		}
 	}
 
 	return (
@@ -197,7 +202,7 @@ function App() {
 							<dl>
 								<dt>
 									{numberEmployees} employee(s) * {dailyTravelDistance} km ⨉{" "}
-									{workingDays} days x €{travelExpensesInEuros} + {" "}
+									{workingDays} days x €{travelExpensesInEuros} +{" "}
 									{totalOfficeCosts} =
 								</dt>
 								<dd>€{Math.round(totalExpensesInclOffice)} per year</dd>
@@ -206,10 +211,8 @@ function App() {
 						<p></p>
 
 						<div className="card">
-							<h3>Or to make it a bit more visually attractive for you:</h3>
-							<div id="result">
-                {ifStatement()}
-              </div>
+							<h3>Or to make it a bit more attractive for you:</h3>
+							<div id="result">{ifStatement()}</div>
 						</div>
 					</form>
 				</div>
