@@ -50,7 +50,7 @@ function App() {
     return <div>
       <div>
           <h2>Because your employees are working remote, you saved <strong>€{Math.round(totalExpensesInclOffice)}</strong> and can now buy this:</h2>
-          <img alt="cars" src={imageURL} />
+          <img alt="cars" class="responsive" src={imageURL} />
       </div>
     </div>;
 		// } else if (
@@ -75,7 +75,7 @@ function App() {
 						<div className="card">
 							<div className="input-group">
 								<label htmlFor="number-employees">
-									<span role="img" aria-label="stopwatch icon"></span>{" "}
+									{/* <span role="img" aria-label="stopwatch icon"></span>{" "} */}
 									<span>Number of employees:</span>
 								</label>
 								<input
