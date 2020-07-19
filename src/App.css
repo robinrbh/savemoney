@@ -58,6 +58,7 @@ html {
 main {
   padding: 24px 0;
 }
+
 @media (min-width: 800px) {
   .main-content.main-content {
     display: flex;

@@ -11,29 +11,55 @@ function App() {
 
 	const travelExpensesInEuros = travelExpenses / 100;
 	const dailyTravelDistance = travelDistance * 2;
-	const totalTravelDistance =
-		dailyTravelDistance * workingDays * (52 - vacationDays / workingDays);
+	const totalTravelDistance = dailyTravelDistance * workingDays * (52 - vacationDays / workingDays);
 	const totalOfficeCosts = officeCosts * 12;
 
 	// totalExpenses = 60km per dag * 5 dagen * 52 weken * 0.19
-	const totalExpenses =
-		numberEmployees * (totalTravelDistance * travelExpensesInEuros);
+	const totalExpenses = numberEmployees * (totalTravelDistance * travelExpensesInEuros);
 	const totalExpensesInclOffice = totalExpenses + totalOfficeCosts;
 
-	// var image1 = document.getElementById('smallCar');
-	// var image2 = document.getElementById('bigCar');
+  const getCar = costs => {
+    if (totalExpensesInclOffice < 50000 ){
+      return "BMW 1-serie!";
+    } else if (totalExpensesInclOffice >= 50000 && totalExpensesInclOffice < 199000) {
+      return "BMW X5";
+    } else if (totalExpensesInclOffice >= 199000 && totalExpensesInclOffice < 500000) {
+      return "Ferrari 458";
+    } else if (totalExpensesInclOffice >= 500000) {
+      return "Pagani";
+    }
+}
 
-	function ifStatement() {
-		if (totalExpensesInclOffice <= 26679) {
-			return "Small car!";
-		} else if (
-			totalExpensesInclOffice > 26679 &&
-			totalExpensesInclOffice <= 50000
-		) {
-			return "Big vacation!";
-		} else {
-			return "You can now go around the world!";
-		}
+	function ifStatement(costs) {
+
+      const rightNow = getCar(costs);
+      
+      let imageURL = "";
+
+		if (rightNow === "BMW 1-serie!") {
+      //return "You just saved enough money to buy a small car!";
+      imageURL = "https://s1.cdn.autoevolution.com/images/testdrive2_chapters/2013-bmw-m135i-xdrive-test-drive-1.jpg";
+    } else if (rightNow === "BMW X5"){
+      imageURL = "https://besthqwallpapers.com/Uploads/3-10-2019/107219/thumb2-2020-bmw-x5-m-competition-front-view-exterior-blue-suv.jpg";
+    } else if (rightNow === "Ferrari 458") {
+      imageURL = "https://media.autoweek.nl/m/m1my59hbq7cr_800.jpg";
+    } else if (rightNow === "Pagani") {
+      imageURL = "https://static.autoblog.nl/images/wp2019/pagani-huayra-roadster-bc-csr-racing-2-game-2019-001.jpg";
+    }
+
+    return <div>
+      <div>
+          <h2>Because your employees are working remote, you saved <strong>€{Math.round(totalExpensesInclOffice)}</strong> and can now buy this:</h2>
+          <img alt="cars" src={imageURL} />
+      </div>
+    </div>;
+		// } else if (
+		// 	totalExpensesInclOffice > 26679 && totalExpensesInclOffice <= 50000
+		// ) {
+		// 	return "Now you just saved enough money to go on a big vacation!";
+		// } else {
+		// 	return "You have now saved enough money so you can go for a trip around the world!";
+		// }
 	}
 
 	return (
@@ -202,8 +228,7 @@ function App() {
 							<dl>
 								<dt>
 									{numberEmployees} employee(s) * {dailyTravelDistance} km ⨉{" "}
-									{workingDays} days x €{travelExpensesInEuros} +{" "}
-									{totalOfficeCosts} =
+									{workingDays} days x €{travelExpensesInEuros} + {totalOfficeCosts} =
 								</dt>
 								<dd>€{Math.round(totalExpensesInclOffice)} per year</dd>
 							</dl>
@@ -212,7 +237,7 @@ function App() {
 
 						<div className="card">
 							<h3>Or to make it a bit more attractive for you as a boss:</h3>
-							<div id="result">{ifStatement()}</div>
+							{ifStatement()}
 						</div>
 					</form>
 				</div>
