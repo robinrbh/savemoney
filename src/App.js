@@ -211,7 +211,7 @@ function App() {
 						<p></p>
 
 						<div className="card">
-							<h3>Or to make it a bit more attractive for you:</h3>
+							<h3>Or to make it a bit more attractive for you as a boss:</h3>
 							<div id="result">{ifStatement()}</div>
 						</div>
 					</form>
